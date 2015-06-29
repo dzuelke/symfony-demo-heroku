@@ -95,7 +95,7 @@ We will now fork this app, and push a new version of the code to it. We can run 
 
     $ heroku open --remote staging
 
-You should see posts on the blog. Take one further down the list in the admin panel, and mark the "featured" checkbox before saving. This post will now be at the top of the list.
+You should see posts on the blog. Take one further down the list in the admin panel, and mark the "featured" checkbox before saving. This post will now be pinned to the top of the list in the main blog page with a star symbol (the admin panel still has random/weird order).
 
 At the same time, the main production app is obviously still without that flag.
 
