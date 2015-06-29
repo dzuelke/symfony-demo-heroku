@@ -74,6 +74,11 @@ class Post
     private $publishedAt;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $featured = false;
+
+    /**
      * @ORM\OneToMany(
      *      targetEntity="Comment",
      *      mappedBy="post",
@@ -154,6 +159,16 @@ class Post
     public function setPublishedAt($publishedAt)
     {
         $this->publishedAt = $publishedAt;
+    }
+
+    public function getFeatured()
+    {
+        return $this->featured;
+    }
+
+    public function setFeatured($featured)
+    {
+        $this->featured = (bool)$featured;
     }
 
     public function getComments()

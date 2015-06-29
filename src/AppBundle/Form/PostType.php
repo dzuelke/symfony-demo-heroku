@@ -41,6 +41,7 @@ class PostType extends AbstractType
             ->add('publishedAt', 'datetime', array(
                 'widget' => 'single_text',
             ))
+            ->add('featured', 'checkbox')
         ;
     }
 

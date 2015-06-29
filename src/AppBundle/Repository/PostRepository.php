@@ -31,6 +31,7 @@ class PostRepository extends EntityRepository
             ->select('p')
             ->where('p.publishedAt <= :now')->setParameter('now', new \DateTime())
             ->orderBy('p.publishedAt', 'DESC')
+            ->orderBy('p.featured', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
