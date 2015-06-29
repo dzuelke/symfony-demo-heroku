@@ -38,7 +38,6 @@ class Version20150629223845 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('CREATE SCHEMA public');
         $this->addSql('ALTER TABLE Comments DROP CONSTRAINT FK_A6E8F47C4B89032C');
         $this->addSql('DROP SEQUENCE Comments_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE Posts_id_seq CASCADE');
