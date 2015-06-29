@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
+ * @ORM\Table("Comments")
  *
  * Defines the properties of the Comment entity to represent the blog comments.
  * See http://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
