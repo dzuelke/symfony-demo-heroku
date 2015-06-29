@@ -1,5 +1,24 @@
 imports:
     - { resource: config.yml }
+    - { resource: parameters_prod.php }
+
+doctrine:
+    dbal:
+        # instead of configuring the database access options in this file, we pull
+        # them from the app/config/parameters.yml file. The reason is that config.yml
+        # stores options that change the application behavior and parameters.yml
+        # stores options that change from one server to another
+        driver:   null
+        host:     null
+        port:     null
+        dbname:   null
+        user:     null
+        password: null
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        path:     null
+        url:      %database_url%
 
 #framework:
 #    validation:
@@ -19,7 +38,7 @@ monolog:
             handler:      nested
         nested:
             type:  stream
-            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            path:  "php://stderr"
             level: debug
         console:
             type:  console
