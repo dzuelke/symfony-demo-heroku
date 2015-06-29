@@ -55,6 +55,9 @@
         ],
         "compile": [
             "rm -rf app/cache/*"
+        ],
+        "release": [
+            "app/console doctrine:migrations:migrate"
         ]
     },
     "config": {
