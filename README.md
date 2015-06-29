@@ -121,7 +121,43 @@ Promote staging to production:
 
     $ heroku logs --tail --remote heroku
 
-You should see the migration to add the "featured" flag successfully completing on the main production application.
+You should see the migration to add the "featured" flag successfully completing on the main production application upon promotion of the release:
+
+    2015-06-29T22:51:41.768066+00:00 heroku[api]: Promote vast-dawn-4816-staging v7 30d337a by dz@heroku.com
+    2015-06-29T22:51:41.768066+00:00 heroku[api]: Release v6 created by dz@heroku.com
+    2015-06-29T22:51:41.655532+00:00 heroku[api]: Starting process with command `/app/.heroku/bin/release` by dz@heroku.com
+    2015-06-29T22:51:42.101377+00:00 heroku[web.1]: State changed from up to starting
+    2015-06-29T22:51:45.663170+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+    2015-06-29T22:51:46.399290+00:00 app[web.1]: Going down, terminating child processes...
+    2015-06-29T22:51:47.834978+00:00 heroku[web.1]: Process exited with status 0
+    2015-06-29T22:51:49.510886+00:00 heroku[run.4993]: Starting process with command `/app/.heroku/bin/release`
+    2015-06-29T22:51:50.106768+00:00 heroku[run.4993]: State changed from starting to up
+    2015-06-29T22:51:52.722625+00:00 app[run.4993]:                                                               
+    2015-06-29T22:51:52.722650+00:00 app[run.4993]:                     Application Migrations                    
+    2015-06-29T22:51:52.722657+00:00 app[run.4993]:                                                               
+    2015-06-29T22:51:52.722659+00:00 app[run.4993]: 
+    2015-06-29T22:51:52.736363+00:00 app[run.4993]: Migrating up to 20150629232638 from 20150629223845
+    2015-06-29T22:51:52.813183+00:00 app[run.4993]: 
+    2015-06-29T22:51:52.813187+00:00 app[run.4993]:   ++ migrating 20150629232638
+    2015-06-29T22:51:52.813189+00:00 app[run.4993]: 
+    2015-06-29T22:51:52.817191+00:00 app[run.4993]:      -> ALTER TABLE posts ADD featured BOOLEAN NOT NULL DEFAULT false
+    2015-06-29T22:51:54.030625+00:00 app[run.4993]: 
+    2015-06-29T22:51:54.030630+00:00 app[run.4993]:   ++ migrated (1.29s)
+    2015-06-29T22:51:54.041970+00:00 app[run.4993]: 
+    2015-06-29T22:51:54.041974+00:00 app[run.4993]:   ------------------------
+    2015-06-29T22:51:54.041975+00:00 app[run.4993]: 
+    2015-06-29T22:51:54.042137+00:00 app[run.4993]:   ++ finished in 1.29
+    2015-06-29T22:51:54.042250+00:00 app[run.4993]:   ++ 1 migrations executed
+    2015-06-29T22:51:54.042385+00:00 app[run.4993]:   ++ 1 sql queries
+    2015-06-29T22:51:55.021863+00:00 heroku[run.4993]: Process exited with status 0
+    2015-06-29T22:51:55.387101+00:00 heroku[run.4993]: State changed from up to complete
+    2015-06-29T22:51:49.085824+00:00 heroku[web.1]: Starting process with command `$(composer config bin-dir)/heroku-php-apache2 web/`
+    2015-06-29T22:51:51.951229+00:00 app[web.1]: DOCUMENT_ROOT changed to 'web/'
+    2015-06-29T22:51:52.003119+00:00 app[web.1]: Optimizing defaults for 1X dyno...
+    2015-06-29T22:51:52.192666+00:00 app[web.1]: 4 processes at 128MB memory limit.
+    2015-06-29T22:51:52.204698+00:00 app[web.1]: Starting php-fpm...
+    2015-06-29T22:51:54.210908+00:00 app[web.1]: Starting httpd...
+    2015-06-29T22:51:54.588372+00:00 heroku[web.1]: State changed from starting to up
 
 #### Test
 
