@@ -81,6 +81,8 @@ We will now fork this app, and push a new version of the code to it. We can run 
     $ heroku fork --from ... --to ...-staging
     $ heroku git:remote --remote staging --app ...-staging
 
+(replace "..." with your app name)
+
 #### Deploy
 
     $ git push staging master
@@ -95,7 +97,11 @@ We will now fork this app, and push a new version of the code to it. We can run 
 
 You should see posts on the blog. Take one further down the list in the admin panel, and mark the "featured" checkbox before saving. This post will now be at the top of the list.
 
+At the same time, the main production app is obviously still without that flag.
+
 ### Pipelines!
+
+It's time to use pipelines to promote the new feature, and have the database migration happen automatically.
 
 #### Prepare
 
@@ -103,8 +109,22 @@ Make a pipeline on the staging app, with the first (production) app as the "down
 
     $ heroku pipeline:add ... --app ...-staging
 
+(replace "..." with your app name)
+
 #### Promote
 
 Promote staging to production:
 
     $ heroku pipeline:promote --remote staging
+
+#### Check logs
+
+    $ heroku logs --tail --remote heroku
+
+You should see the migration to add the "featured" flag successfully completing on the main production application.
+
+#### Test
+
+    $ heroku open --remote heroku
+
+The production blog now has the "featured" flag capability as well; give it a try!
