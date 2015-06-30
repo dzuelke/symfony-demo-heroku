@@ -74,12 +74,13 @@ You should see posts on the blog, and you should be able to edit posts yourself 
 
 ### Version Two
 
-We will now fork this app, and push a new version of the code to it. We can run migrations by hand in this case.
+We will now fork this app, and push a new version of the code to it.
 
 #### Fork
 
     $ heroku fork --from ... --to ...-staging
     $ heroku git:remote --remote staging --app ...-staging
+    $ heroku sudo labs:enable release-phase --remote staging
 
 (replace "..." with your app name)
 
@@ -87,9 +88,7 @@ We will now fork this app, and push a new version of the code to it. We can run 
 
     $ git push staging master
 
-#### Migrate
-
-    $ heroku run --remote staging "composer release"
+You will notice that the migrations automatically run after the deploy, updating the database to give the posts table a "featured" flag column.
 
 #### Test
 
